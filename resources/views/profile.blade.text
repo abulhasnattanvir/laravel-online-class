@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            background-color: gray;
+            padding: 10px;
+        }
+        .box1{
+            background-color: green;
+            padding:40px;
+            color:#000;
+        }
+        .box2{
+            background-color: yellow;
+            padding:40px;
+            color:#fff;
+        }
+        .box3{
+            background-color: blue;
+            padding:40px;
+            color:#fff;
+        }
+        .box4{
+            background-color: red;
+            padding:40px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{$title}}</h1>
+    {{-- if --}}
+    @if (count($users)!=0)  
+        <p>Total Number of user : {{count($users)}}</p>  
+    @endif
+
+    {{-- else --}}
+    @if (count($users)>0)
+        <h4>Valid</h4>
+    @else
+        <h4>Invalid</h4>
+    @endif
+
+    {{-- if else --}}
+    @if (count($users)==1)
+       <div class="box1">
+             <span>Label One</span>
+             <p>User is Number :{{count($users)}}</p>
+       </div>
+    @elseif (count($users)==2)
+        <div class="box2">
+            <span>Label Two</span>
+            <p>User is Number :{{count($users)}}</p>
+        </div>
+    @elseif (count($users)==3)
+        <div class="box2">
+            <span>Label Three</span>
+            <p>User is Number :{{count($users)}}</p>
+        </div>
+    @else
+        <div class="box4">
+            <p>User is Empty</p>
+        </div>
+    @endif
+
+
+    {{--  loop --}}
+    <ul>
+    @foreach ($users as $user)
+        <li>
+            {{$user}}
+        </li>
+    @endforeach
+    </ul>
+
+
+    <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat, velit.</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, minus facere fugiat tenetur totam minima sed, id eius iusto assumenda laborum ut eligendi, laudantium accusantium beatae similique quae! Corporis, soluta?</p>
+
+</body>
+</html>
