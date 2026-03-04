@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tearcherinfo extends Model
 {
-    //this is modal for user
+
     use HasFactory;
     protected $table = 'teacher_info';
     protected $fillable = [
