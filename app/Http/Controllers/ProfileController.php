@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Models\Tearcherinfo;
 use Illuminate\Http\Request;
+use App\Models\Tearcherinfo;
 
 class ProfileController extends Controller
 {
