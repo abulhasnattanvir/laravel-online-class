@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('behand_boxes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('employees', function (Blueprint $table) {
+           $table->string('country')->after('address');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('behand_boxes');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropColumn('country');
+        });
     }
 };
