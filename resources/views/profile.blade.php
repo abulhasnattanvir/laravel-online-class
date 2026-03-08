@@ -10,34 +10,47 @@
             border: 1px solid #000;
         }
         table{
-            width: 700px;
+            width: 100%;
             margin: auto
+        }
+        .container{
+            width: 1200px;
+            max-width: 100%;
+            margin: auto;
         }
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Address</td>
-            <td>Country</td>
-            <td>Date</td>
-        </tr>
-        {{-- <pre>
-            {{dd($employees)}}
-        </pre> --}}
-        @foreach ($employees as $employe)    
-        <tr>
-            <td>{{$employe->id}}</td>
-            <td>{{$employe->name}}</td>
-            <td>{{$employe->email}}</td>
-            <td>{{$employe->address}}</td>
-            <td>{{$employe->country}}</td>
-            <td>{{$employe->created_at}}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="container">
+        <a href="/profile/create">Create Page</a>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Address</td>
+                <td>Country</td>
+                <td>Date</td>
+                <td>Action</td>
+            </tr>
+            {{-- <pre>
+                {{dd($employees)}}
+            </pre> --}}
+            @foreach ($employees as $employe)    
+            <tr>
+                <td>{{$employe->id}}</td>
+                <td>{{$employe->name}}</td>
+                <td>{{$employe->email}}</td>
+                <td>{{$employe->address}}</td>
+                <td>{{$employe->country}}</td>
+                <td>{{$employe->created_at}}</td>
+                <td>
+                    <a href="{{route('employe.edit', $employe)}}">Edit</a> |
+                    <a href="">Delete</a>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </body>
 </html>

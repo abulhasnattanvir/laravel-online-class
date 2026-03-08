@@ -12,13 +12,23 @@
     </style>
 </head>
 <body>
+    <h1>Edit Page</h1>
     <a href="/profile/view">View Page</a>
 
-    <form action="/profile/store" method="POST">
+    @if($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </div>
+    @endif
+
+    <form action="{{route('employe.update', $data->id)}}" method="POST">
         @csrf
+        @method('PUT')
         <label for="">Enter Your Name:*</label>
         <br>
-        <input type="text" name="uname" placeholder="Name">
+        <input type="text" name="uname"  value="{{old('uname', $data->name)}}" >
         <br>
         <small>
             @error('uname')
@@ -26,7 +36,7 @@
             @enderror
         </small>
         <br>
-        <input type="email" name="uemail" placeholder="Email">
+        <input type="email" name="uemail" value="{{old('uemail', $data->email)}}"  >
         <br>
         <small>
             @error('uemail')
@@ -34,7 +44,7 @@
             @enderror
         </small>
         <br>
-        <input type="text" name="uphone" placeholder="Phone">
+        <input type="text" name="uphone" value="{{old('uphone', $data->phone)}}" >
         <br>
         <small>
             @error('uphone')
@@ -42,7 +52,7 @@
             @enderror
         </small>
         <br>
-        <input type="text" name="uaddress" placeholder="Address">
+        <input type="text" name="uaddress" value="{{old('uaddress', $data->address)}}">
         <br>
             <small>
                 @error('uaddress')
@@ -50,7 +60,7 @@
                 @enderror
             </small>
         <br>
-        <input type="text" name="ucountry" placeholder="Country">
+        <input type="text" name="ucountry" value="{{old('ucountry', $data->country)}}">
         <br>
             <small>
             @error('ucountry')
@@ -58,7 +68,7 @@
             @enderror
             </small>
         <br>
-        <button type="submit">Save</button>
+        <button type="submit">Update</button>
     </form>
 
 </body>

@@ -42,4 +42,33 @@ class ProfileController extends Controller
 
       return view('createProfile');
    }
+
+
+   public function edit(Employee $employe){
+      $data = $employe;
+      return view('editProfile',compact('data'));
+   }
+
+   public function update(Request $request, Employee $employe){
+      $validated = $request->validate([
+         'uname' => 'required',
+         'uemail' => 'required',
+         'uphone' => 'required|max:11',
+         'uaddress' => 'required',
+         'ucountry' => 'required'
+      ]);
+      // $employe->update($validated);
+      // dd($employe->update($validated));
+      $employe->update([
+         'name'    => $validated['uname'],
+         'email'   => $validated['uemail'],
+         'phone'   => $validated['uphone'],
+         'address' => $validated['uaddress'],
+         'country' => $validated['ucountry'],
+      ]);
+
+      return redirect()->route('profile.view')->with('success','teslrjksdf sldjf');
+
+   }
+
 }
